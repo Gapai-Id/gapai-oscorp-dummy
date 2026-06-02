@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { DashboardShell } from '@/components/layout/DashboardShell';
+import { NavigationContext } from '@/components/navigation-context';
 import CandidatesOverviewScreen from '@/components/screens/CandidatesOverviewScreen';
 import CandidatesListScreen from '@/components/screens/CandidatesListScreen';
 import CandidatesDetailScreen from '@/components/screens/CandidatesDetailScreen';
-import CandidatesKanbanScreen from '@/components/screens/CandidatesKanbanScreen';
 import ScreeningListScreen from '@/components/screens/ScreeningListScreen';
 import JobsListScreen from '@/components/screens/JobsListScreen';
 import JobsCreateScreen from '@/components/screens/JobsCreateScreen';
@@ -23,9 +23,8 @@ import LoginScreen from '@/components/screens/LoginScreen';
 
 const SCREENS = [
   { id: 'CM-01', name: 'Candidates — Overview: Funnel (CM-01)', nav: 'candidates', component: CandidatesOverviewScreen },
-  { id: 'CM-02', name: 'Candidates — List: Candidates Tab (CM-02)', nav: 'candidates', component: CandidatesListScreen },
+  { id: 'CM-02', name: 'Candidates — List (Table / Kanban) (CM-02)', nav: 'candidates', component: CandidatesListScreen },
   { id: 'CM-03', name: 'Candidates — Detail (CM-03)', nav: 'candidates', component: CandidatesDetailScreen },
-  { id: 'CM-04', name: 'Candidates — Kanban: Alt Layout (CM-04)', nav: 'candidates', component: CandidatesKanbanScreen },
   { id: 'SC-01', name: 'Screening — List (SC-01)', nav: 'screening', component: ScreeningListScreen },
   { id: 'JB-01', name: 'Jobs — List (JB-01)', nav: 'jobs', component: JobsListScreen },
   { id: 'JB-02', name: 'Jobs — Create (JB-02)', nav: 'jobs', component: JobsCreateScreen },
@@ -49,6 +48,7 @@ export default function InventoryPage() {
   const ActiveScreen = current.component;
 
   return (
+    <NavigationContext.Provider value={setCurrentId}>
     <div className="min-h-screen pb-14">
       {current.nav ? (
         <DashboardShell
@@ -80,5 +80,6 @@ export default function InventoryPage() {
         </div>
       </div>
     </div>
+    </NavigationContext.Provider>
   );
 }

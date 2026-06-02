@@ -1,6 +1,8 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useNavigate } from '@/components/navigation-context';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -66,6 +68,7 @@ const typeColor: Record<string, string> = {
 };
 
 export default function StagesListScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -73,7 +76,7 @@ export default function StagesListScreen() {
           <h2 className="text-2xl font-bold">Stages Management</h2>
           <p className="text-muted-foreground">Create and manage pipeline stages for recruitment process</p>
         </div>
-        <Button size="sm"><Plus className="h-4 w-4 mr-1" />Create Stage</Button>
+        <Button size="sm" onClick={() => navigateTo('ST-02')}><Plus className="h-4 w-4 mr-1" />Create Stage</Button>
       </div>
 
       <Card className="p-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
@@ -142,7 +145,7 @@ export default function StagesListScreen() {
                 <TableCell className="text-sm text-muted-foreground">{s.updated}</TableCell>
                 <TableCell className="text-sm text-muted-foreground">{s.created}</TableCell>
                 <TableCell>
-                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0" onClick={() => navigateTo('ST-03')}>
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </TableCell>

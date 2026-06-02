@@ -1,7 +1,9 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowLeft, Globe, Languages, Pencil, User, Wrench } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const MOCK = {
   id: 'jkr-1',
@@ -99,6 +101,7 @@ const StatusBadge = ({ status, hasDraftChanges }: { status: typeof MOCK.status; 
 };
 
 export default function JakersDetailScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6 pb-12">
       {/* Header */}
@@ -111,10 +114,10 @@ export default function JakersDetailScreen() {
           <p className="text-sm text-muted-foreground">Last updated {MOCK.updatedAt}</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm" onClick={() => navigateTo('JK-01')}>
             <ArrowLeft className="h-4 w-4 mr-1" />Back to Jaker List
           </Button>
-          <Button size="sm">
+          <Button size="sm" onClick={() => navigateTo('JK-04')}>
             <Pencil className="h-4 w-4 mr-1" />Edit
           </Button>
         </div>

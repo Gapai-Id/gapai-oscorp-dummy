@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { MoreHorizontal, Plus, RefreshCw, Search } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const MOCK = [
   {
@@ -56,6 +57,7 @@ const statusVariant: Record<string, string> = {
 };
 
 export default function JakersListScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -63,7 +65,7 @@ export default function JakersListScreen() {
           <h2 className="text-2xl font-semibold tracking-tight">Jaker Management</h2>
           <p className="text-sm text-muted-foreground">Manage qualification templates for each job bench type.</p>
         </div>
-        <Button size="sm"><Plus className="h-4 w-4 mr-1" />Create Jaker</Button>
+        <Button size="sm" onClick={() => navigateTo('JK-03')}><Plus className="h-4 w-4 mr-1" />Create Jaker</Button>
       </div>
 
       <Card>
@@ -105,7 +107,7 @@ export default function JakersListScreen() {
                 const visible = j.countries.slice(0, 3);
                 const overflow = j.countries.length - 3;
                 return (
-                  <TableRow key={j.id} className="cursor-pointer">
+                  <TableRow key={j.id} className="cursor-pointer" onClick={() => navigateTo('JK-02')}>
                     <TableCell className="font-medium">{j.name}</TableCell>
                     <TableCell>
                       <div className="flex flex-col gap-0.5">

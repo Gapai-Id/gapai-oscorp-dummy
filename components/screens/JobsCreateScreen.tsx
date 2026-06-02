@@ -1,8 +1,10 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const STEPS = [
   { step: 1, label: 'Basic Information' },
@@ -20,6 +22,7 @@ const TOTAL_STEPS = 8;
 const PROGRESS = (CURRENT_STEP / TOTAL_STEPS) * 100;
 
 export default function JobsCreateScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6">
       <div className="flex items-center justify-between">
@@ -119,10 +122,10 @@ export default function JobsCreateScreen() {
       </Card>
 
       <div className="flex justify-between border-t pt-6">
-        <Button variant="outline">
+        <Button variant="outline" onClick={() => navigateTo('JB-01')}>
           Cancel
         </Button>
-        <Button>
+        <Button onClick={() => navigateTo('JB-01')}>
           Next<ArrowRight className="h-4 w-4 ml-1" />
         </Button>
       </div>

@@ -1,9 +1,11 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, ArrowRight, CheckCircle, Circle, Info, Languages, Plus, Save } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const SECTIONS = [
   { step: 1, label: 'Candidate Basic' },
@@ -20,6 +22,7 @@ const MOCK_LANGUAGES = [
 ];
 
 export default function JakersCreateLanguageScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6 pb-12">
       {/* Header */}
@@ -28,7 +31,7 @@ export default function JakersCreateLanguageScreen() {
           <h2 className="text-2xl font-semibold tracking-tight">New Jaker</h2>
           <p className="text-sm text-muted-foreground">Create a qualification template for a new bench type.</p>
         </div>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" onClick={() => navigateTo('JK-01')}>
           <ArrowLeft className="h-4 w-4 mr-1" />Back to Jaker List
         </Button>
       </div>
@@ -61,17 +64,13 @@ export default function JakersCreateLanguageScreen() {
             <CardContent className="pt-6 space-y-6">
               <p className="text-xs text-muted-foreground">* Required field</p>
 
-              {/* Section header */}
               <div className="flex items-center gap-2">
                 <Languages className="h-5 w-5 text-primary-500" />
                 <h2 className="text-lg font-semibold">Language Requirements</h2>
               </div>
 
-              {/* Required Languages */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Required Languages * <span className="text-muted-foreground text-xs font-normal">(minimum 1)</span></label>
-                </div>
+                <label className="text-sm font-medium">Required Languages * <span className="text-muted-foreground text-xs font-normal">(minimum 1)</span></label>
 
                 {MOCK_LANGUAGES.map((lang) => (
                   <div key={lang.id} className="rounded-lg border p-4 space-y-4">
@@ -121,7 +120,6 @@ export default function JakersCreateLanguageScreen() {
                 </Button>
               </div>
 
-              {/* Certification Framework */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Certification Framework *</label>
                 <Select>
@@ -134,15 +132,11 @@ export default function JakersCreateLanguageScreen() {
                 </Select>
               </div>
 
-              {/* Pass Threshold */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Pass Threshold *</label>
-                <p className="text-xs text-muted-foreground">Display label shown on the candidate's RTD profile for employers.</p>
                 <Input placeholder="e.g., Conversational, Professional" />
-                <p className="text-xs text-muted-foreground">Changes to a select (A1–C2 / N5–N1) when CEFR or JLPT framework is selected.</p>
               </div>
 
-              {/* Focus Area */}
               <div className="space-y-2">
                 <label className="text-sm font-medium">Focus Area *</label>
                 <Select>
@@ -156,42 +150,38 @@ export default function JakersCreateLanguageScreen() {
                 </Select>
               </div>
 
-              {/* Formal Language Certificate Required */}
               <div className="flex items-center justify-between rounded-lg border p-4">
                 <div className="space-y-0.5">
                   <p className="text-base font-medium">Formal Language Certificate Required</p>
-                  <p className="text-sm text-muted-foreground">Candidate must provide a recognized language certificate (e.g., JLPT card, CEFR certificate).</p>
+                  <p className="text-sm text-muted-foreground">Candidate must provide a recognized language certificate.</p>
                 </div>
                 <Switch />
               </div>
 
-              {/* System info */}
               <div className="flex items-start gap-2 rounded-lg border border-muted bg-muted/40 px-4 py-3">
                 <Info className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                 <p className="text-xs text-muted-foreground">
-                  <span className="font-medium text-foreground">Language pass score: 70% (system default)</span> — this standard is maintained by authoring questions at the correct level for this Jaker, not by changing this number.
+                  <span className="font-medium text-foreground">Language pass score: 70% (system default)</span> — maintained by authoring questions at the correct level.
                 </p>
               </div>
             </CardContent>
           </Card>
 
-          {/* Navigation */}
           <div className="mt-4 flex items-center justify-between">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => navigateTo('JK-03')}>
               <ArrowLeft className="h-4 w-4 mr-1" />Back
             </Button>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm">
                 <Save className="h-4 w-4 mr-1" />Save Draft
               </Button>
-              <Button size="sm">
+              <Button size="sm" onClick={() => navigateTo('JK-03c')}>
                 Next: Skills<ArrowRight className="h-4 w-4 ml-1" />
               </Button>
             </div>
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="xl:sticky xl:top-6 self-start">
           <Card>
             <CardContent className="pt-6 space-y-5">
@@ -203,25 +193,17 @@ export default function JakersCreateLanguageScreen() {
                       key={s.step}
                       className={`flex items-center gap-2 text-sm ${s.step < CURRENT_SECTION ? 'text-primary-500' : s.step === CURRENT_SECTION ? 'font-medium text-foreground' : 'text-muted-foreground'}`}
                     >
-                      {s.step < CURRENT_SECTION
-                        ? <CheckCircle className="h-4 w-4 shrink-0" />
-                        : <Circle className="h-4 w-4 shrink-0" />
-                      }
+                      {s.step < CURRENT_SECTION ? <CheckCircle className="h-4 w-4 shrink-0" /> : <Circle className="h-4 w-4 shrink-0" />}
                       {s.label}
                     </div>
                   ))}
                 </div>
               </div>
-
               <div className="border-t pt-4 space-y-3">
                 <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Summary</p>
                 <div>
                   <p className="text-xs text-muted-foreground">Name</p>
                   <p className="text-sm font-medium truncate">JaKer Hospitality — Bulgaria</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">Gender</p>
-                  <p className="text-sm">Male / Female</p>
                 </div>
               </div>
             </CardContent>

@@ -1,10 +1,12 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Bell, LayoutList, Columns3 } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
-function TabBar({ active }: { active: 'overview' | 'candidates' }) {
+function TabBar({ active, onOverviewClick }: { active: 'overview' | 'candidates'; onOverviewClick: () => void }) {
   return (
     <div className="inline-flex items-center gap-1 rounded-lg bg-muted p-1">
-      <span className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${active === 'overview' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground cursor-pointer hover:text-foreground'}`}>
+      <span onClick={onOverviewClick} className={`rounded-md px-3 py-1 text-sm font-medium transition-colors cursor-pointer ${active === 'overview' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}>
         Overview
       </span>
       <span className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${active === 'candidates' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground cursor-pointer hover:text-foreground'}`}>
@@ -61,6 +63,7 @@ const COLUMNS = [
 ];
 
 export default function CandidatesKanbanScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6 pb-12">
       <div>
@@ -70,7 +73,7 @@ export default function CandidatesKanbanScreen() {
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <TabBar active="candidates" />
+          <TabBar active="candidates" onOverviewClick={() => navigateTo('CM-01')} />
 
           {/* View toggle */}
           <div className="inline-flex items-center gap-1 rounded-lg border bg-background p-1">
@@ -101,6 +104,7 @@ export default function CandidatesKanbanScreen() {
                 {col.candidates.map((c) => (
                   <div
                     key={c.id}
+                    onClick={() => navigateTo('CM-03')}
                     className="rounded-xl border bg-card p-3.5 shadow-sm cursor-pointer hover:shadow-md hover:border-primary-300 transition-all space-y-3"
                   >
                     <div className="space-y-0.5">

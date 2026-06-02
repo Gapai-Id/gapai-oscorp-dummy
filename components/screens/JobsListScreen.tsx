@@ -1,6 +1,8 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { useNavigate } from '@/components/navigation-context';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -21,6 +23,7 @@ const statusColor: Record<string, string> = {
 };
 
 export default function JobsListScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-4">
@@ -28,7 +31,7 @@ export default function JobsListScreen() {
           <h2 className="text-2xl font-semibold tracking-tight">Jobs Management</h2>
           <p className="text-xl text-muted-foreground">Manage candidates across job stages and track recruitment progress.</p>
         </div>
-        <Button size="sm"><Plus className="h-4 w-4 mr-1" />New Job</Button>
+        <Button size="sm" onClick={() => navigateTo('JB-02')}><Plus className="h-4 w-4 mr-1" />New Job</Button>
       </div>
 
       <Card>

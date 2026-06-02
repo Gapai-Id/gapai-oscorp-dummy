@@ -1,9 +1,11 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 import { ArrowLeft, CheckCircle, Globe, Save } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const SECTIONS = [
   { step: 1, label: 'Candidate Basic' },
@@ -16,6 +18,7 @@ const CURRENT_SECTION = 4;
 const PROGRESS = ((CURRENT_SECTION - 1) / 4) * 100;
 
 export default function JakersCreatePlacementScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6 pb-12">
       {/* Header */}
@@ -24,7 +27,7 @@ export default function JakersCreatePlacementScreen() {
           <h2 className="text-2xl font-semibold tracking-tight">New Jaker</h2>
           <p className="text-sm text-muted-foreground">Create a qualification template for a new bench type.</p>
         </div>
-        <Button variant="ghost" size="sm">
+        <Button variant="ghost" size="sm" onClick={() => navigateTo('JK-01')}>
           <ArrowLeft className="h-4 w-4 mr-1" />Back to Jaker List
         </Button>
       </div>
@@ -97,14 +100,14 @@ export default function JakersCreatePlacementScreen() {
 
           {/* Navigation */}
           <div className="mt-4 flex items-center justify-between">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" onClick={() => navigateTo('JK-03c')}>
               <ArrowLeft className="h-4 w-4 mr-1" />Back
             </Button>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={() => navigateTo('JK-01')}>
                 <Save className="h-4 w-4 mr-1" />Save Draft
               </Button>
-              <Button size="sm">
+              <Button size="sm" onClick={() => navigateTo('JK-02')}>
                 <CheckCircle className="h-4 w-4 mr-1" />Publish Jaker
               </Button>
             </div>

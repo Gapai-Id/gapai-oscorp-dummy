@@ -1,16 +1,18 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Eye, LogIn } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 export default function LoginScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
           <CardTitle className="text-2xl font-semibold">
             <div className="flex flex-col items-center justify-center gap-3">
-              {/* gapai wordmark — replicated as styled text since image not in inventory */}
               <div className="text-3xl font-bold text-primary-600 tracking-tight" style={{ fontFamily: 'sans-serif' }}>
                 gapai
               </div>
@@ -34,7 +36,7 @@ export default function LoginScreen() {
                 </button>
               </div>
             </div>
-            <Button className="w-full">
+            <Button className="w-full" onClick={() => navigateTo('CM-01')}>
               <LogIn className="h-4 w-4 mr-2" />Sign in
             </Button>
           </div>

@@ -1,5 +1,7 @@
+'use client';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const PHASES = [
   { label: 'Onboarding', count: 142, pct: 100, drop: null },
@@ -9,13 +11,19 @@ const PHASES = [
   { label: 'RTD Proportion', count: 12, pct: 8, drop: 65 },
 ];
 
-function TabBar({ active }: { active: 'overview' | 'candidates' }) {
+function TabBar({ active, onTabChange }: { active: 'overview' | 'candidates'; onTabChange: (t: 'overview' | 'candidates') => void }) {
   return (
     <div className="inline-flex items-center gap-1 rounded-lg bg-muted p-1">
-      <span className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${active === 'overview' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground cursor-pointer hover:text-foreground'}`}>
+      <span
+        onClick={() => onTabChange('overview')}
+        className={`rounded-md px-3 py-1 text-sm font-medium transition-colors cursor-pointer ${active === 'overview' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+      >
         Overview
       </span>
-      <span className={`rounded-md px-3 py-1 text-sm font-medium transition-colors ${active === 'candidates' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground cursor-pointer hover:text-foreground'}`}>
+      <span
+        onClick={() => onTabChange('candidates')}
+        className={`rounded-md px-3 py-1 text-sm font-medium transition-colors cursor-pointer ${active === 'candidates' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+      >
         Candidates
       </span>
     </div>
@@ -23,6 +31,7 @@ function TabBar({ active }: { active: 'overview' | 'candidates' }) {
 }
 
 export default function CandidatesOverviewScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6 pb-12">
       <div>
@@ -31,7 +40,7 @@ export default function CandidatesOverviewScreen() {
       </div>
 
       <div className="space-y-6">
-        <TabBar active="overview" />
+        <TabBar active="overview" onTabChange={(t) => { if (t === 'candidates') navigateTo('CM-02'); }} />
 
         <div className="space-y-6">
           <div className="flex items-center gap-2 text-sm">
@@ -43,7 +52,10 @@ export default function CandidatesOverviewScreen() {
           <div className="flex items-stretch gap-2">
             {PHASES.map((p, i) => (
               <div key={p.label} className="flex items-center gap-2 flex-1">
-                <Card className="flex-1 cursor-pointer hover:border-primary-400 hover:shadow-md transition-all">
+                <Card
+                  className="flex-1 cursor-pointer hover:border-primary-400 hover:shadow-md transition-all"
+                  onClick={() => navigateTo('CM-02')}
+                >
                   <CardContent className="pt-5 pb-4 space-y-3">
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide leading-snug">{p.label}</p>
                     <p className="text-3xl font-bold tabular-nums">{p.count}</p>
@@ -65,7 +77,7 @@ export default function CandidatesOverviewScreen() {
             ))}
           </div>
 
-          <p className="text-xs text-muted-foreground">Click a phase card to jump to the filtered candidate list. See CM-02 for the Candidates tab.</p>
+          <p className="text-xs text-muted-foreground">Click a phase card to jump to the filtered candidate list.</p>
         </div>
       </div>
     </div>

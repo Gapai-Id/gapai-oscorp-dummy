@@ -1,8 +1,10 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowLeft, GripVertical, NotepadTextDashed, Plus, Save, Trash2, X } from 'lucide-react';
+import { useNavigate } from '@/components/navigation-context';
 
 const MOCK_FIELDS = [
   { id: 'f1', label: 'Full Name', type: 'text', required: true },
@@ -26,6 +28,7 @@ const fieldTypeColor: Record<string, string> = {
 };
 
 export default function StagesCreateScreen() {
+  const navigateTo = useNavigate();
   return (
     <div className="mx-10 space-y-6">
       {/* Header */}
@@ -120,14 +123,14 @@ export default function StagesCreateScreen() {
 
           {/* Footer */}
           <div className="flex flex-row justify-between border-t border-border pt-4">
-            <Button variant="outline">
+            <Button variant="outline" onClick={() => navigateTo('ST-01')}>
               <X className="h-4 w-4 mr-1" />Cancel
             </Button>
             <div className="flex flex-row gap-2">
-              <Button variant="outline">
+              <Button variant="outline" onClick={() => navigateTo('ST-01')}>
                 <Save className="h-4 w-4 mr-1" />Save and Publish
               </Button>
-              <Button>
+              <Button onClick={() => navigateTo('ST-01')}>
                 <NotepadTextDashed className="h-4 w-4 mr-1" />Save as Draft
               </Button>
             </div>
