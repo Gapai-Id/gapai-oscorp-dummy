@@ -6,7 +6,7 @@ import { useNavigate } from '@/components/navigation-context';
 const PHASES = [
   { label: 'Onboarding', count: 142, pct: 100, drop: null },
   { label: 'Pre-Assessment', count: 98, pct: 69, drop: 31 },
-  { label: 'Jaker Selection', count: 61, pct: 43, drop: 38 },
+  { label: 'Jaker Enrollment', count: 61, pct: 43, drop: 38 },
   { label: 'Assessment', count: 34, pct: 24, drop: 44 },
   { label: 'RTD Proportion', count: 12, pct: 8, drop: 65 },
 ];

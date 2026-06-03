@@ -60,7 +60,7 @@ const KANBAN_COLUMNS = [
     ],
   },
   {
-    phase: 'Jaker Selection',
+    phase: 'Jaker Enrollment',
     color: 'bg-secondary-400',
     candidates: [
       { id: 'CDT-0011', name: 'Doni Prasetyo', phone: '+62 878-4444-7890', jaker: 'JaKer Hospitality — Bulgaria' },
@@ -171,7 +171,7 @@ export default function CandidatesListScreen() {
                       <SelectItem value="all">All Phases</SelectItem>
                       <SelectItem value="onboarding">Onboarding</SelectItem>
                       <SelectItem value="pre_assessment">Pre-Assessment</SelectItem>
-                      <SelectItem value="jaker_selection">Jaker Selection</SelectItem>
+                      <SelectItem value="jaker_selection">Jaker Enrollment</SelectItem>
                       <SelectItem value="assessment">Assessment</SelectItem>
                       <SelectItem value="rtd">RTD Proportion</SelectItem>
                     </SelectContent>

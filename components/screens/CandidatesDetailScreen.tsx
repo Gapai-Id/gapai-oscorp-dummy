@@ -19,7 +19,7 @@ const CANDIDATE = {
 const TIMELINE = [
   { phase: 'Onboarding', date: '15 May 2026, 09:12', status: 'done' },
   { phase: 'Pre-Assessment', date: '16 May 2026, 14:30', status: 'done' },
-  { phase: 'Jaker Selection', date: 'In progress', status: 'current' },
+  { phase: 'Jaker Enrollment', date: 'In progress', status: 'current' },
   { phase: 'Assessment', date: null, status: 'pending' },
   { phase: 'RTD Proportion', date: null, status: 'pending' },
 ];

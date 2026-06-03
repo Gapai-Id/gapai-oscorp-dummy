@@ -37,7 +37,7 @@ const COLUMNS = [
     ],
   },
   {
-    phase: 'Jaker Selection',
+    phase: 'Jaker Enrollment',
     color: 'bg-secondary-400',
     candidates: [
       { id: 'CDT-0011', name: 'Doni Prasetyo', phone: '+62 878-4444-7890', jaker: 'JaKer Hospitality — Bulgaria' },
