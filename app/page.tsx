@@ -20,6 +20,14 @@ import JakersCreateSkillsScreen from '@/components/screens/JakersCreateSkillsScr
 import JakersCreatePlacementScreen from '@/components/screens/JakersCreatePlacementScreen';
 import JakersEditScreen from '@/components/screens/JakersEditScreen';
 import LoginScreen from '@/components/screens/LoginScreen';
+import TrainingProvidersListScreen from '@/components/screens/TrainingProvidersListScreen';
+import TrainingProviderDetailScreen from '@/components/screens/TrainingProviderDetailScreen';
+import TrainingProviderFormScreen from '@/components/screens/TrainingProviderFormScreen';
+import TrainingsListScreen from '@/components/screens/TrainingsListScreen';
+import TrainingFormScreen from '@/components/screens/TrainingFormScreen';
+import TrainingDetailScreen from '@/components/screens/TrainingDetailScreen';
+import CandidatesDetailTrainingScreen from '@/components/screens/CandidatesDetailTrainingScreen';
+import TrainingHubScreen from '@/components/screens/TrainingHubScreen';
 
 const SCREENS = [
   { id: 'CM-01', name: 'Candidates — Overview: Funnel (CM-01)', nav: 'candidates', component: CandidatesOverviewScreen },
@@ -39,6 +47,14 @@ const SCREENS = [
   { id: 'JK-03d', name: 'Jakers — Create: Placement (JK-03d)', nav: 'jakers', component: JakersCreatePlacementScreen },
   { id: 'JK-04', name: 'Jakers — Edit (JK-04)', nav: 'jakers', component: JakersEditScreen },
   { id: 'L-01', name: 'Login (L-01)', nav: null, component: LoginScreen },
+  { id: 'TP-00', name: 'Training — Hub (TP-00)', nav: 'training', component: TrainingHubScreen },
+  { id: 'TP-01', name: 'Training Providers — List (TP-01)', nav: 'training', component: TrainingProvidersListScreen },
+  { id: 'TP-02', name: 'Training Provider — Detail (TP-02)', nav: 'training', component: TrainingProviderDetailScreen },
+  { id: 'TP-03', name: 'Training Provider — Create/Edit (TP-03)', nav: 'training', component: TrainingProviderFormScreen },
+  { id: 'TP-04', name: 'Trainings — List (TP-04)', nav: 'training', component: TrainingsListScreen },
+  { id: 'TP-05', name: 'Training — Create/Edit (TP-05)', nav: 'training', component: TrainingFormScreen },
+  { id: 'TP-06', name: 'Training — Detail + Enrolled Candidates (TP-06)', nav: 'training', component: TrainingDetailScreen },
+  { id: 'CM-03b', name: 'Candidate Detail — Training Section (CM-03b)', nav: 'candidates', component: CandidatesDetailTrainingScreen },
 ];
 
 export default function InventoryPage() {

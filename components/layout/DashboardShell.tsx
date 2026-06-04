@@ -1,6 +1,6 @@
 'use client';
 
-import { Briefcase, ChevronRight, ClipboardList, ListChecks, Upload, UsersRound } from 'lucide-react';
+import { Briefcase, ChevronRight, ClipboardList, GraduationCap, ListChecks, Upload, UsersRound } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider } from '@/components/ui/sidebar';
 
@@ -10,6 +10,7 @@ const NAV = [
   { id: 'jobs', label: 'Jobs', icon: Briefcase },
   { id: 'stages', label: 'Stages', icon: ListChecks },
   { id: 'jakers', label: 'Jakers', icon: ClipboardList },
+  { id: 'training', label: 'Training', icon: GraduationCap },
 ];
 
 interface Props {
